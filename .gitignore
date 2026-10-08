@@ -1,0 +1,24 @@
+# .NET build output
+bin/
+obj/
+TestResults/
+*.user
+*.suo
+
+# Snap packaging (src/DriveOscope/build-snap-amd64.sh)
+*.snap
+src/DriveOscope/publish/
+src/DriveOscope/parts/
+src/DriveOscope/stage/
+src/DriveOscope/prime/
+src/DriveOscope/overlay/
+src/DriveOscope/.craft/
+
+# IDE
+.vs/
+.vscode/
+.idea/
+
+# Third-party reference material (Bosch Rexroth EAL / ctrlX SDK); kept locally, not redistributed
+libDocs/
+libExamples/

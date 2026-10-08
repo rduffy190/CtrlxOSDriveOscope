@@ -1,0 +1,22 @@
+namespace DriveCapture;
+
+table Channel {
+  index: ubyte;
+  signal: string;                  // SERCOS IDN, e.g. "S-0-0040"
+  values: [float];                 // one value per entry in time_us
+}
+
+table ScopeCapture {
+  captured_at: string;             // ISO 8601 with offset
+  drive_ip_address: string;
+  time_resolution_us: uint32;
+  memory_size: uint32;
+  pre_trigger_percent: ubyte;      // 0-100
+  pre_trigger_samples: uint32;
+  drive_p0032: uint32;
+  drive_p0033: uint32;
+  time_us: [int32];                // relative to trigger, negative = pre-trigger
+  channels: [Channel];
+}
+
+root_type ScopeCapture;

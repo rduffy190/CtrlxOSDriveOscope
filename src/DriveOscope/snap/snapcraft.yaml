@@ -1,0 +1,42 @@
+# Based on libExamples/ctrlx/datalayer.provider.simple/snap/snapcraft.yaml
+name: ctrlx-drive-oscope
+title: ctrlX Drive Oscilloscope
+base: core24
+version: 1.0.0
+summary: Configure, trigger and read ctrlX DRIVE oscilloscope captures via Data Layer
+description: |
+  Provides the Data Layer endpoints under ctrlx-drive-oscope/captures. A client creates a capture
+  with a ScopeConfig, fires the trigger and reads back the ScopeCapture. Drive access uses the
+  Easy Automation Library. See docs/scope_capture_how_to.pdf.
+grade: stable
+confinement: strict
+
+platforms:
+  amd64:
+
+apps:
+  app:
+    command: DriveOscope
+    # network: Data Layer and drive (EAL) connections; network-bind in case the EAL opens local sockets.
+    plugs:
+      - network
+      - network-bind
+      - datalayer
+    daemon: simple
+    restart-condition: always
+    passthrough:
+      restart-delay: 10s
+    environment:
+      LD_LIBRARY_PATH: $LD_LIBRARY_PATH:$SNAP
+      DOTNET_SYSTEM_GLOBALIZATION_INVARIANT: "true"
+
+parts:
+  app:
+    plugin: dump
+    source: ./publish
+
+plugs:
+  datalayer:
+    interface: content
+    content: datalayer
+    target: $SNAP_DATA/.datalayer

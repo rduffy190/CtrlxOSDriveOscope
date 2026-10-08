@@ -1,0 +1,12 @@
+namespace scope_config;
+
+table ScopeConfig {
+  drive_ip_address: string;
+  signals: [string];               // SERCOS IDNs, e.g. "S-0-0040"
+  time_resolution_us: uint32;
+  memory_size: uint32;
+  pre_trigger_percent: ubyte;      // 0-100
+  measurement_timeout_ms: uint32;
+}
+
+root_type ScopeConfig;

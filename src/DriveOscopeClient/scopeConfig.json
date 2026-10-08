@@ -1,0 +1,11 @@
+{
+  "drive_ip_address": "172.31.254.1",
+  "signals": [
+    "S-0-0040",
+    "S-0-0051"
+  ],
+  "time_resolution_us": 4000,
+  "memory_size": 4096,
+  "pre_trigger_percent": 20,
+  "measurement_timeout_ms": 60000
+}
